@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lysbryter</title>
+</head>
+<style>
+    .dark {
+        background-color: rgb(53, 53, 53);
+    }
+    .light {
+        background-color: rgb(255, 255, 147);
+    }
+    .on {
+
+        height: 100px;
+        background-color: rgb(165, 165, 165);
+    }
+
+    .off {
+
+        height: 100px;
+    }
+
+    div.bryter {
+        border: 2px solid gray;
+        width: 80px;
+        height: 200px;
+        cursor: pointer;
+    }
+    #tekstboks{
+        border: solid white;
+        border-radius: 30%;
+        height: 50px;
+        width: 150px;
+        text-align: center;
+        font-size: larger;
+        background-color: white;
+        margin: 5%;
+    }
+    .darkbulb{
+        opacity: 10%;
+    }
+</style>
+
+<body id="body" class="dark">
+    <div id="bulb" class="darkbulb">
+        <img src="bulb.png">
+    </div>
+
+    <div class="bryter">
+        <div id="switch1" class="on" onclick="toggleLight()"></div>
+
+        <div id="¨switch2" class="off" onclick="toggleLight()"></div>
+    </div>
+
+<div id="tekstboks">Kanskje trykk på bryteren?</div>
+
+
+    <script>
+
+        let light = true;
+        let tekstboks = document.getElementById('tekstboks')
+        let bulb = document.getElementById('bulb')
+        
+        function toggleLight(){
+            light = !light
+            brightness()
+                }
+
+
+        function brightness() {
+            if(light == true){
+                lightswitch('dark', 'light')
+                tekstboks.innerHTML = "Her var det mørkt!";
+                bulb.classList.add('darkbulb');
+
+            }
+            else{
+                lightswitch('light', 'dark');
+                tekstboks.innerHTML = "Det var bedre!";
+                bulb.classList.remove('darkbulb');
+            }
+        }
+
+        function lightswitch(addclass, removeclass){
+            document.getElementById('body').classList.add(addclass)
+            document.getElementById('body').classList.remove(removeclass)
+
+        }
+    
+    </script>
+</body>
+
+</html>
